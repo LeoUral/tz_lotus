@@ -134,11 +134,13 @@ export default class LogIn extends React.Component {
                             <span>Область деятельности: </span>
                             <select className="input-form" size="1"
                                 onChange={this.handleChageActivity}>
+                                <option value='' > Область деятельности </option>
                                 <option value="industry" > Машиностроение </option>
                                 <option value="transportation"> Транспортировка </option>
                                 <option value="electronic"> Электронника </option>
                                 <option value="architecture"> Строительство </option>
                                 <option value="science"> Научная деятельность </option>
+                                <option value="computer"> IT - технологии </option>
                             </select>
                         </label>
                         <label className="label" style={{ visibility: show ? 'visible' : 'hidden' }} >

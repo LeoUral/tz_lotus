@@ -48,9 +48,10 @@ body {
 }
 
 .input-form {
-    height: 30px;
+    height: 35px;
     width: 65%;
     padding: 0 0 0 10px;
+    box-sizing: border-box;
     text-transform: uppercase;
     transition: 0.5s;
     &:focus {
