@@ -1,0 +1,112 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.log-in {
+  width: 50%;
+  min-height: 20vh;
+  margin: 150px auto;
+  border: 1px solid #000;
+  background-color: #eee;
+  -webkit-box-shadow: 5px 5px 10px #aaa;
+          box-shadow: 5px 5px 10px #aaa;
+}
+
+.form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.label {
+  width: 80%;
+  height: 30px;
+  margin: 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.label span {
+  padding: 5px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.input-form {
+  height: 30px;
+  width: 65%;
+  padding: 0 0 0 10px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.input-form:focus {
+  background-color: #d2f3d2;
+}
+
+.btn {
+  outline: none;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-submit {
+  width: 100px;
+  height: 30px;
+  margin: 20px auto;
+  background-color: #ccc;
+  color: #fff;
+  font-size: 18px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.btn-submit:hover {
+  background-color: #814848;
+  color: #fff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-box-shadow: 3px 3px 5px #000;
+          box-shadow: 3px 3px 5px #000;
+}
+
+.btn-submit:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.btn-reg {
+  margin: 5px;
+  background-color: #ddd;
+  color: #999;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.btn-reg:hover {
+  background-color: #ccc;
+  color: #000;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
