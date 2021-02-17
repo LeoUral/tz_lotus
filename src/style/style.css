@@ -13,6 +13,12 @@ body {
           box-shadow: 5px 5px 10px #aaa;
 }
 
+.logo {
+  width: 120px;
+  height: 100px;
+  background-color: #ccc;
+}
+
 .form {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -27,6 +33,11 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.form h2 {
+  margin-top: 0;
+  text-align: center;
 }
 
 .label {
@@ -56,11 +67,64 @@ body {
   width: 65%;
   padding: 0 0 0 10px;
   text-transform: uppercase;
-  font-size: 12px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .input-form:focus {
   background-color: #d2f3d2;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.input-form:focus::-webkit-input-placeholder {
+  color: #d2f3d2;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.input-form:focus:-ms-input-placeholder {
+  color: #d2f3d2;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.input-form:focus::-ms-input-placeholder {
+  color: #d2f3d2;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.input-form:focus::placeholder {
+  color: #d2f3d2;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.input-form::-webkit-input-placeholder {
+  color: #ccc;
+  font-size: 12px;
+}
+
+.input-form:-ms-input-placeholder {
+  color: #ccc;
+  font-size: 12px;
+}
+
+.input-form::-ms-input-placeholder {
+  color: #ccc;
+  font-size: 12px;
+}
+
+.input-form::placeholder {
+  color: #ccc;
+  font-size: 12px;
+}
+
+.input-error {
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  background-color: #e47c7c;
 }
 
 .btn {
@@ -70,7 +134,7 @@ body {
 }
 
 .btn-submit {
-  width: 100px;
+  width: 150px;
   height: 30px;
   margin: 20px auto;
   background-color: #ccc;
