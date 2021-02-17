@@ -9,6 +9,9 @@ Frontend
 нужно реализовать выбор svg-иконок с api Iconfinder:
  
 https://developer.iconfinder.com/reference/overview-1
+
+ключ API - Svvh55mogtsQVuOZQvjSEd3ai428StsXZdIuoUSViQECV1qTRrEJELm86Fq3ijLU 
+индетификатор клиента - ofnXQgVUdwfzCZunaKUCFHQeQpuiiqeQJ8b7oBQbCY4jQahiQ1V0afvB2i01ZckR
  
 Поля для регистрации: название фирмы, род деятельности, фио представителя, выбор из dropdown-списка подходящей svg – иконки для фирмы. Выбор идёт по категориям, затем выводятся с оффсетом 10 иконки на выбор.
 Форма авторизации, вёрстка на Ваше усмотрение.

@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 export default class LogIn extends React.Component {
     constructor(props) {
         super(props);
@@ -7,7 +8,9 @@ export default class LogIn extends React.Component {
             name: '',
             activity: '',
             agent: '',
-            show: false
+            show: false,
+            data: [],
+            iconUrl: ''
         }
 
         this.handleClickSubmit = this.handleClickSubmit.bind(this);
@@ -16,6 +19,7 @@ export default class LogIn extends React.Component {
         this.handleChageActivity = this.handleChageActivity.bind(this);
         this.handleChageAgent = this.handleChageAgent.bind(this);
         this.verificationInput = this.verificationInput.bind(this);
+        this.getIcon = this.getIcon.bind(this);
     }
 
     handleClickSubmit(e) {
@@ -82,16 +86,43 @@ export default class LogIn extends React.Component {
         })
     }
 
+    async getIcon() {
+        const category = 'science';//transportation, architecture, computer, electronic, network, industry, science
+        // const url = 'https://iconfinder-api-auth.herokuapp.com/v4/icons/1814097';
+        const options = {
+            method: 'GET',
+            headers: {
+                Authorization: 'Bearer Svvh55mogtsQVuOZQvjSEd3ai428StsXZdIuoUSViQECV1qTRrEJELm86Fq3ijLU'
+            },
+            contentType: 'application/json'
+        };
+        this.response = await fetch(`https://iconfinder-api-auth.herokuapp.com/v4/icons/search?query=${category}&count=10`, options);
+        this.setState({
+            data: await this.response.json()
+        })
+
+        this.setState((state) => ({
+            iconUrl: state.data.icons[0].raster_sizes[6].formats[0].preview_url // url icon
+        }))
+
+        console.log(this.state.data); //test
+    }
+
+    componentDidMount() {
+        this.getIcon();
+    }
+
     render() {
 
         const titleIn = 'Вход в систему LOTUS';
         const titleReg = 'Регистрация';
         const show = this.state.show;
+        const iconUrl = this.state.iconUrl;
 
         return (
             <>
                 <section className="log-in">
-                    <div className="logo"></div>
+                    <div className="logo"> <img src={iconUrl} alt="icon" /></div>
                     <form className="form">
                         <h2> {show ? titleReg : titleIn} </h2>
                         <label className="label">
@@ -101,8 +132,14 @@ export default class LogIn extends React.Component {
                         </label>
                         <label className="label">
                             <span>Область деятельности: </span>
-                            <input className="input-form" type="text" placeholder="область деятельности"
-                                onChange={this.handleChageActivity} />
+                            <select className="input-form" size="1"
+                                onChange={this.handleChageActivity}>
+                                <option value="industry" > Машиностроение </option>
+                                <option value="transportation"> Транспортировка </option>
+                                <option value="electronic"> Электронника </option>
+                                <option value="architecture"> Строительство </option>
+                                <option value="science"> Научная деятельность </option>
+                            </select>
                         </label>
                         <label className="label" style={{ visibility: show ? 'visible' : 'hidden' }} >
                             <span>ФИО представителя: </span>
