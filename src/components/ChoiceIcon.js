@@ -24,7 +24,7 @@ export default class ChoiceIcon extends React.Component {
         setTimeout(() => {
             // console.log(this.state.category + ' --- in CHOCE');// test
             this.getTenUrl()
-        }, 100)
+        })
 
     }
 
@@ -53,6 +53,7 @@ export default class ChoiceIcon extends React.Component {
         this.viewerIcon = [];
         const icon = this.state.tenIconsUrl.icons;
 
+        console.log(this.state.tenIconsUrl);
         // console.log(icon);//test
         // console.log(icon[0].raster_sizes[0].formats[0].preview_url);
 

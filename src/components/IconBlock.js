@@ -25,7 +25,7 @@ export default class IconBlock extends React.Component {
             },
             contentType: 'application/json'
         };
-        this.response = await fetch(`https://iconfinder-api-auth.herokuapp.com/v4/categories?count=100`, options);
+        this.response = await fetch(` https://iconfinder-api-auth.herokuapp.com/v4/categories?count=100`, options);
         this.setState({
             iconDataCategories: await this.response.json()
         })
