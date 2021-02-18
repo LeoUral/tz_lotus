@@ -22,6 +22,7 @@ export default class LogIn extends React.Component {
         this.handleChageAgent = this.handleChageAgent.bind(this);
         this.verificationInput = this.verificationInput.bind(this);
         this.doChangeCategory = this.doChangeCategory.bind(this);
+        this.doChangeUrlIcon = this.doChangeUrlIcon.bind(this);
     }
 
     handleClickSubmit(e) {
@@ -96,14 +97,24 @@ export default class LogIn extends React.Component {
     }
 
     doChangeCategory(category) {
+        console.log(category + ' <<< IN LOGIN');
         this.setState({
-            dataCategory: category
+            dataCategory: ''
+        })
+        setTimeout(() => {
+            this.setState({
+                dataCategory: category
+            })
+        }, 5)
+
+    }
+
+    doChangeUrlIcon(url) {
+        this.setState({
+            iconUrl: url
         })
     }
 
-    componentDidMount() {
-
-    }
 
     render() {
 
@@ -111,6 +122,7 @@ export default class LogIn extends React.Component {
         const titleReg = 'Регистрация';
         const show = this.state.show;
         const iconUrl = this.state.iconUrl;
+        const category = this.state.dataCategory;
 
         return (
             <>
@@ -131,7 +143,11 @@ export default class LogIn extends React.Component {
                         <IconBlock
                             onChangeCategory={this.doChangeCategory}
                         />
-                        {this.state.dataCategory.length < 1 ? '' : <ChoiceIcon category={this.state.dataCategory} />}
+                        {category.length < 1 ? '' :
+                            <ChoiceIcon
+                                category={category}
+                                onChangeUrlIcon={this.doChangeUrlIcon}
+                            />}
 
                         <label className="label" style={{ visibility: show ? 'visible' : 'hidden' }} >
                             <span>ФИО представителя: </span>

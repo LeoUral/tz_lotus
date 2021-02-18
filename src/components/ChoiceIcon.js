@@ -6,17 +6,31 @@ export default class ChoiceIcon extends React.Component {
         this.state = {
             iconURL: '',
             tenIconsUrl: [],
-            iconImage: ''
+            iconImage: '',
+            category: ''
         }
 
         this.getTenUrl = this.getTenUrl.bind(this);
-        this.handleChangeIcon = this.handleChangeIcon.bind(this);
+        this.handleClickIcon = this.handleClickIcon.bind(this);
         this.viewerIcon = this.viewerIcon.bind(this);
+        this.takeCategory = this.takeCategory.bind(this);
+    }
+
+    takeCategory() {
+        this.setState({
+            category: this.props.category
+        })
+
+        setTimeout(() => {
+            console.log(this.state.category + ' --- in CHOCE');
+            this.getTenUrl()
+        }, 100)
+
     }
 
     async getTenUrl() {
 
-        const category = this.props.category;
+        const category = this.state.category;
         console.log(category + ' <<<< category choice');
         const options = {
             method: 'GET',
@@ -40,14 +54,16 @@ export default class ChoiceIcon extends React.Component {
         const icon = this.state.tenIconsUrl.icons;
 
         console.log(icon);
-        console.log(icon[0].raster_sizes[0].formats[0].preview_url);
+        // console.log(icon[0].raster_sizes[0].formats[0].preview_url);
 
         icon.forEach(data => {
             this.viewerIcon.push(
                 <React.Fragment key={data.raster_sizes[0].formats[0].preview_url}>
                     <div className="icon-block"
-                        value={data.raster_sizes[6].formats[0].preview_url} >
-                        <img src={data.raster_sizes[0].formats[0].preview_url} alt="icon" />
+                        onClick={this.handleClickIcon}>
+                        <img src={data.raster_sizes[0].formats[0].preview_url}
+                            data-url={data.raster_sizes[6].formats[0].preview_url}
+                            alt="icon" />
                     </div>
                 </React.Fragment>
             )
@@ -58,12 +74,13 @@ export default class ChoiceIcon extends React.Component {
         })
     }
 
-    handleChangeIcon(e) {
-        console.log(e.target.value);
+    handleClickIcon(e) {
+        console.log(e.target.dataset.url);
+        this.props.onChangeUrlIcon(e.target.dataset.url);
     }
 
     componentDidMount() {
-        this.getTenUrl();
+        this.takeCategory();
     }
 
     render() {

@@ -76,9 +76,16 @@ body {
 .block-icons-form {
     width: 65%;
     display: flex;
+    flex-wrap: wrap;
+    transition: 0.5s;
     .icon-block {
-        margin: 5px;
+        margin: 5px 10px;
         cursor: pointer;
+        transition: 0.5s;
+        &:hover {
+            transform: scale(1.5);
+            transition: 0.5s;
+        }
     }
 }
 

@@ -30,7 +30,7 @@ export default class IconBlock extends React.Component {
             iconDataCategories: await this.response.json()
         })
 
-        console.log(this.state.iconDataCategories.categories[3]); //test
+        console.log(this.state.iconDataCategories.categories); //test
         this.viewerCategories();
 
     }
@@ -45,11 +45,16 @@ export default class IconBlock extends React.Component {
         const categories = this.state.iconDataCategories.categories;
 
         categories.forEach(data => {
-            this.viewerCategory.push(
-                <React.Fragment key={data.name}>
-                    <option value={data.identifier} >{data.name}</option>
-                </React.Fragment>
-            )
+
+            if (!data.identifier.includes("-") && !data.name.includes("Flags")) { // проверка на не действующую категорию
+
+                this.viewerCategory.push(
+                    <React.Fragment key={data.name}>
+                        <option value={data.identifier} >{data.name}</option>
+                    </React.Fragment>
+                )
+            }
+
         });
         console.log(this.viewerCategory);
         this.setState({
@@ -58,7 +63,7 @@ export default class IconBlock extends React.Component {
     }
 
     handleChangeCategory(e) {
-        console.log(e.target.value);//test
+        console.log(e.target.value);//test       
         this.props.onChangeCategory(e.target.value);
     }
 
