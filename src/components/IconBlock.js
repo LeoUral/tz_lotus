@@ -30,7 +30,7 @@ export default class IconBlock extends React.Component {
             iconDataCategories: await this.response.json()
         })
 
-        console.log(this.state.iconDataCategories.categories); //test
+        // console.log(this.state.iconDataCategories.categories); //test
         this.viewerCategories();
 
     }
@@ -56,14 +56,14 @@ export default class IconBlock extends React.Component {
             }
 
         });
-        console.log(this.viewerCategory);
+        // console.log(this.viewerCategory);
         this.setState({
             viewNameCategory: this.viewerCategory
         })
     }
 
     handleChangeCategory(e) {
-        console.log(e.target.value);//test       
+        // console.log(e.target.value);//test       
         this.props.onChangeCategory(e.target.value);
     }
 
