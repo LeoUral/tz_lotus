@@ -131,6 +131,18 @@ body {
   background-color: #e47c7c;
 }
 
+.block-icons-form {
+  width: 65%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.block-icons-form .icon-block {
+  margin: 5px;
+  cursor: pointer;
+}
+
 .btn {
   outline: none;
   cursor: pointer;

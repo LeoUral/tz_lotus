@@ -1,4 +1,6 @@
 import React from 'react';
+import ChoiceIcon from './ChoiceIcon';
+import IconBlock from './IconBlock';
 
 
 export default class LogIn extends React.Component {
@@ -9,7 +11,7 @@ export default class LogIn extends React.Component {
             activity: '',
             agent: '',
             show: false,
-            data: [],
+            dataCategory: '', // icon category
             iconUrl: ''
         }
 
@@ -19,7 +21,7 @@ export default class LogIn extends React.Component {
         this.handleChageActivity = this.handleChageActivity.bind(this);
         this.handleChageAgent = this.handleChageAgent.bind(this);
         this.verificationInput = this.verificationInput.bind(this);
-        this.getIcon = this.getIcon.bind(this);
+        this.doChangeCategory = this.doChangeCategory.bind(this);
     }
 
     handleClickSubmit(e) {
@@ -32,6 +34,7 @@ export default class LogIn extends React.Component {
         const name = this.state.name.length;
         const activity = this.state.activity.length;
         const agent = this.state.agent.length;
+        const category = this.state.dataCategory;
         const inputData = document.querySelectorAll('.input-form')
 
         if (name < 1) {
@@ -46,13 +49,19 @@ export default class LogIn extends React.Component {
             inputData[1].classList.remove('input-error');
         }
 
-        if (agent < 1 && this.state.show === true) {
+        if (category < 1) {
             inputData[2].classList.add('input-error');
         } else {
             inputData[2].classList.remove('input-error');
         }
 
-        if (name < 1 || activity < 1 || (agent < 1 && this.state.show === true)) {
+        if (agent < 1 && this.state.show === true) {
+            inputData[3].classList.add('input-error');
+        } else {
+            inputData[3].classList.remove('input-error');
+        }
+
+        if (name < 1 || activity < 1 || category < 1 || (agent < 1 && this.state.show === true)) {
             console.log('Verification => ERROR'); //test
         } else {
             console.log('Verification => OK'); //test
@@ -86,30 +95,14 @@ export default class LogIn extends React.Component {
         })
     }
 
-    async getIcon() {
-        const category = 'science';//transportation, architecture, computer, electronic, network, industry, science
-        // const url = 'https://iconfinder-api-auth.herokuapp.com/v4/icons/1814097';
-        const options = {
-            method: 'GET',
-            headers: {
-                Authorization: 'Bearer Svvh55mogtsQVuOZQvjSEd3ai428StsXZdIuoUSViQECV1qTRrEJELm86Fq3ijLU'
-            },
-            contentType: 'application/json'
-        };
-        this.response = await fetch(`https://iconfinder-api-auth.herokuapp.com/v4/icons/search?query=${category}&count=10`, options);
+    doChangeCategory(category) {
         this.setState({
-            data: await this.response.json()
+            dataCategory: category
         })
-
-        this.setState((state) => ({
-            iconUrl: state.data.icons[0].raster_sizes[6].formats[0].preview_url // url icon
-        }))
-
-        console.log(this.state.data); //test
     }
 
     componentDidMount() {
-        this.getIcon();
+
     }
 
     render() {
@@ -132,17 +125,14 @@ export default class LogIn extends React.Component {
                         </label>
                         <label className="label">
                             <span>Область деятельности: </span>
-                            <select className="input-form" size="1"
-                                onChange={this.handleChageActivity}>
-                                <option value='' > Область деятельности </option>
-                                <option value="industry" > Машиностроение </option>
-                                <option value="transportation"> Транспортировка </option>
-                                <option value="electronic"> Электронника </option>
-                                <option value="architecture"> Строительство </option>
-                                <option value="science"> Научная деятельность </option>
-                                <option value="computer"> IT - технологии </option>
-                            </select>
+                            <input className="input-form" type="text" placeholder="область деятельности"
+                                onChange={this.handleChageActivity} />
                         </label>
+                        <IconBlock
+                            onChangeCategory={this.doChangeCategory}
+                        />
+                        {this.state.dataCategory.length < 1 ? '' : <ChoiceIcon category={this.state.dataCategory} />}
+
                         <label className="label" style={{ visibility: show ? 'visible' : 'hidden' }} >
                             <span>ФИО представителя: </span>
                             <input className="input-form" type="text" placeholder="представитель"

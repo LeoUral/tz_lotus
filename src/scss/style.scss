@@ -73,6 +73,15 @@ body {
     background-color: rgb(228, 124, 124);
 }
 
+.block-icons-form {
+    width: 65%;
+    display: flex;
+    .icon-block {
+        margin: 5px;
+        cursor: pointer;
+    }
+}
+
 .btn {
     outline: none;
     cursor: pointer;
