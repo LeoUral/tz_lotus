@@ -1,7 +1,7 @@
 [{
         "id": 0,
         "name": "Три поросенка",
-        "ativity": "Строительство",
+        "activity": "Строительство",
         "agent": "Хрюшкин Иван Иваныч",
         "logoUrl": "https://cdn2.iconfinder.com/data/icons/picons-basic-2/57/basic2-179_bank_building-128.png"
 
@@ -9,7 +9,7 @@
     {
         "id": 1,
         "name": "Самоделкин",
-        "ativity": "Машиностроение",
+        "activity": "Машиностроение",
         "agent": "Коловоротов Иван Иваныч",
         "logoUrl": "https://cdn3.iconfinder.com/data/icons/landmarks-and-world-monuments/64/landmarks_world_monument_makkah_kaabah-128.png"
 

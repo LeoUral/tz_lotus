@@ -23,6 +23,7 @@ export default class LogIn extends React.Component {
         this.verificationInput = this.verificationInput.bind(this);
         this.doChangeCategory = this.doChangeCategory.bind(this);
         this.doChangeUrlIcon = this.doChangeUrlIcon.bind(this);
+        this.sendDataCompany = this.sendDataCompany.bind(this);
     }
 
     handleClickSubmit(e) {
@@ -67,6 +68,19 @@ export default class LogIn extends React.Component {
             console.log('Verification => ERROR'); //test
         } else {
             console.log('Verification => OK'); //test
+            this.sendDataCompany();
+        }
+
+    }
+    sendDataCompany() {
+        if (!this.state.show) {
+            this.props.onSendDataCompany(this.state);
+        } else {
+            this.props.onSendDataCompany(this.state);
+            localStorage.setItem('companyName', this.state.name);// разместим данные о новой компании в localStorage
+            localStorage.setItem('companyActivity', this.state.activity);
+            localStorage.setItem('companyAgent', this.state.agent);
+            localStorage.setItem('companyUrl', this.state.iconUrl);
         }
 
     }
@@ -116,7 +130,6 @@ export default class LogIn extends React.Component {
         })
     }
 
-
     render() {
 
         const titleIn = 'Вход в систему LOTUS';
@@ -127,6 +140,18 @@ export default class LogIn extends React.Component {
 
         return (
             <>
+                <header className="header">
+                    <div>
+                        Шпаргалка для входа: <br></br>
+                        Название фирмы: Три поросенка<br></br>
+                        Область деятельности: Строительство<br></br>
+                        или<br></br>
+                        Название: Самоделкин<br></br>
+                        Деятельность: Машиностроение<br></br>
+                        или<br></br>
+                        пройти регистрацию<br></br>
+                    </div>
+                </header>
                 <section className="log-in">
                     <div className="logo"> <img src={iconUrl} alt="icon" /></div>
                     <form className="form">
