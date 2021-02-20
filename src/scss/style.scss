@@ -150,6 +150,9 @@ body {
             text-align: center;
         }
     }
+    &__block_image {
+        position: fixed;
+    }
     &__content {
         width: 100%;
         display: flex;

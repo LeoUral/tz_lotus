@@ -66,9 +66,11 @@ export default class LogIn extends React.Component {
 
         if (name < 1 || activity < 1 || category < 1 || (agent < 1 && this.state.show === true)) {
             console.log('Verification => ERROR'); //test
+            localStorage.setItem('verify', false)
         } else {
             console.log('Verification => OK'); //test
             this.sendDataCompany();
+            localStorage.setItem('verify', true);
         }
 
     }

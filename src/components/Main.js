@@ -35,10 +35,16 @@ export default class Main extends React.Component {
     async getDataCompanyFromServer() {
 
         let response = await fetch('../server/server.json');
-        let dataCompany = await response.json();
 
-        console.log(dataCompany);
-        this.verivicationCompany(dataCompany);
+        if (response.ok) {
+            let dataCompany = await response.json();
+
+            console.log(dataCompany);
+            this.verivicationCompany(dataCompany);
+        } else {
+            console.log('ERROR FETCH');
+        }
+
     }
 
     verivicationCompany(data) {
