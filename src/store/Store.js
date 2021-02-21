@@ -4,22 +4,41 @@ class Store {
 
     time = 0; // время, точка отсчета интервала
     currentTime = 0; // текущее время
-    timing = 0;
+    secTiming = 0;
+    minuteTime = 0; //минуты до конца хода
 
     constructor() {
         makeAutoObservable(this);
     }
 
     startTime() {
-        this.time = new Date();
+        this.time = Number(new Date()) + 120000;
     }
 
     changeTime() {
-        this.currentTime = new Date();
+        this.currentTime = Number(new Date());
     }
 
-    changeTiming(time) {
-        this.timing = time;
+    doChangeTiming(data) {
+        this.minuteTime = Math.floor(data / 60);
+        this.secTiming = Math.floor(data % 60);
+    }
+
+    changeTiming() {
+        if (this.time === 0) {
+            this.startTime();
+        }
+
+        let interval = setInterval(() => {
+            if (this.secTiming >= 0) {
+                this.changeTime();
+                this.changer = (Math.round((this.time - this.currentTime) / 1000))
+                this.doChangeTiming(this.changer)
+            } else {
+                console.log('STOP'); //test
+                clearInterval(interval);
+            }
+        }, 1000);
     }
 }
 export default new Store();

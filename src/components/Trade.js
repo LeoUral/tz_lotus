@@ -1,4 +1,7 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
+import HeaderTrade from './HeaderTrade';
+import InformationTextTrade from './InformationTextTrade';
 import Timing from './Timing';
 
 export default class Trade extends React.Component {
@@ -12,6 +15,10 @@ export default class Trade extends React.Component {
 
 
     componentDidMount() {
+
+        if (!(localStorage.getItem('verify') === 'true')) {
+            document.location.href = '/';
+        }
     }
 
     componentWillUnmount() {
@@ -20,18 +27,15 @@ export default class Trade extends React.Component {
 
     render() {
 
-        if (localStorage.getItem('verify') === false || localStorage.getItem('verify') === null) {
-            document.location.href = '/';
-        }
-        // console.log(localStorage.getItem('verify'));//test
-
-        // const time = this.state.time;
-
         return (
             <>
                 <section>
-                    <div>
-                        Time ==  <Timing />
+                    <Container>
+                        <HeaderTrade />
+                    </Container>
+                    <InformationTextTrade />
+                    <div className="time-block" >
+                        <Timing />
                     </div>
                 </section>
             </>
