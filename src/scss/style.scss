@@ -1,3 +1,4 @@
+@import "./animation";
 body {
     margin: 0;
     padding: 0;
@@ -176,7 +177,7 @@ body {
 }
 
 .timing {
-    width: 200px;
+    width: 220px;
     height: 50px;
     margin: 0 20px;
     padding: 10px 0;
@@ -187,6 +188,12 @@ body {
     border: 1px solid red;
     text-align: center;
     box-sizing: border-box;
+}
+
+.svg-clock {
+    width: 20px;
+    margin: 0 0 0 20px;
+    animation: turn 3s linear infinite;
 }
 
 
