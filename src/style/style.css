@@ -179,7 +179,7 @@ body {
 }
 
 .block-icons-form .icon-block {
-  margin: 5px 10px;
+  margin: 5px 9px;
   cursor: pointer;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -200,7 +200,7 @@ body {
 
 .btn-submit {
   width: 170px;
-  height: 30px;
+  height: 40px;
   margin: 20px auto;
   background-color: #ccc;
   color: #fff;

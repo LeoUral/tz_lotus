@@ -2,7 +2,7 @@
         "id": 0,
         "name": "Три поросенка",
         "activity": "Строительство",
-        "agent": "Хрюшкин Иван Иваныч",
+        "agent": "Хрюшкин Иван Иванович",
         "logoUrl": "https://cdn2.iconfinder.com/data/icons/picons-basic-2/57/basic2-179_bank_building-128.png"
 
     },
@@ -10,8 +10,32 @@
         "id": 1,
         "name": "Самоделкин",
         "activity": "Машиностроение",
-        "agent": "Коловоротов Иван Иваныч",
+        "agent": "Коловоротов Иван Иванович",
         "logoUrl": "https://cdn3.iconfinder.com/data/icons/landmarks-and-world-monuments/64/landmarks_world_monument_makkah_kaabah-128.png"
+
+    },
+    {
+        "id": 2,
+        "name": "Кульман",
+        "activity": "Проектирование",
+        "agent": "Загранчук Степан Степанович",
+        "logoUrl": "https://cdn1.iconfinder.com/data/icons/office-293/128/_Pen_quill_write_office-128.png"
+
+    },
+    {
+        "id": 3,
+        "name": "Поставщик",
+        "activity": "Торговля",
+        "agent": "Горобец Андрей Андреевич",
+        "logoUrl": "https://cdn2.iconfinder.com/data/icons/rpg-fantasy-game-skill-ui/512/light_effect_flash_motion_slash_cross_abstract_2-128.png"
+
+    },
+    {
+        "id": 4,
+        "name": "Электро схема",
+        "activity": "Проектирование",
+        "agent": "Петров Пётр Петрович",
+        "logoUrl": "https://cdn3.iconfinder.com/data/icons/landmark-outline/439/moai_chile_stone_island_statue_easter_rock_head_sculpture_landmark_travel-128.png"
 
     }
 ]
