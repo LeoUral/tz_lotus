@@ -16,7 +16,7 @@ export default class Welcome extends React.Component {
                         <div className="welcome__content">
                             <div><span> Ваша компания *{this.props.name}* допущена в систему LOTOS. </span></div>
                         </div>
-                        <a href="/trading"> перейти на торговую площадку </a>
+                        <a href="/trading" className="welcome__link"> перейти на торговую площадку </a>
                     </div>
                 </section>
             </>

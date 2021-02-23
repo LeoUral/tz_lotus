@@ -13,9 +13,7 @@ export default class Trade extends React.Component {
 
     }
 
-
     componentDidMount() {
-
         if (!(localStorage.getItem('verify') === 'true')) {
             document.location.href = '/';
         }

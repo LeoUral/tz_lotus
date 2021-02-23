@@ -243,6 +243,7 @@ body {
 /****************************/
 .welcome {
   width: 100%;
+  position: relative;
 }
 
 .welcome__block {
@@ -282,6 +283,12 @@ body {
 
 .welcome__content div {
   margin: 10px;
+}
+
+.welcome__link {
+  position: absolute;
+  bottom: 10px;
+  left: 100px;
 }
 
 /********************************/

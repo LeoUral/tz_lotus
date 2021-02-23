@@ -140,6 +140,7 @@ body {
 
 .welcome {
     width: 100%;
+    position: relative;
     &__block {
         width: 90%;
         min-height: 40vh;
@@ -163,6 +164,11 @@ body {
         div {
             margin: 10px;
         }
+    }
+    &__link {
+        position: absolute;
+        bottom: 10px;
+        left: 100px;
     }
 }
 
