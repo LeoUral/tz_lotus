@@ -3,6 +3,7 @@ import { Container } from 'react-bootstrap';
 import HeaderTrade from './HeaderTrade';
 import InformationTextTrade from './InformationTextTrade';
 import Timing from './Timing';
+import ViewTrade from './ViewTrade';
 
 export default class Trade extends React.Component {
     constructor(props) {
@@ -35,6 +36,9 @@ export default class Trade extends React.Component {
                     <div className="time-block" >
                         <Timing />
                     </div>
+                    <Container className="company-block">
+                        <ViewTrade />
+                    </Container>
                 </section>
             </>
         )

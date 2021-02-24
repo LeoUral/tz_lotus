@@ -12,7 +12,7 @@ export default class LogIn extends React.Component {
             agent: '',
             show: false,
             dataCategory: '', // icon category
-            iconUrl: 'https://cdn0.iconfinder.com/data/icons/google-material-design-3-0/48/ic_play_arrow_48px-128.png'
+            iconUrl: './iconfinder_login_account_enter_door_3005767.svg'
         }
 
         this.handleClickSubmit = this.handleClickSubmit.bind(this);
@@ -77,6 +77,7 @@ export default class LogIn extends React.Component {
     sendDataCompany() {
         if (!this.state.show) {
             this.props.onSendDataCompany(this.state);
+            localStorage.clear();
         } else {
             this.props.onSendDataCompany(this.state);
             localStorage.setItem('companyName', this.state.name);// разместим данные о новой компании в localStorage

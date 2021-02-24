@@ -221,3 +221,63 @@ body {
     width: 60%;
     color: rgb(165, 18, 18);
 }
+
+.blue {
+    color: rgb(0, 0, 255);
+    font-weight: 700;
+}
+
+.red {
+    color: rgb(255, 0, 0);
+    font-weight: 700;
+}
+
+.green {
+    color: rgb(0, 128, 0);
+    font-weight: 700;
+}
+
+.bg-gray {
+    background-color: #eee;
+}
+
+.line-bottom {
+    border-bottom: 1px solid #ccc;
+}
+
+.company-block {
+    margin-left: 0;
+}
+
+.member {
+    width: 100vw;
+    margin: 40px auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    &__title-block {
+        min-width: 450px;
+        & h4,
+        h5 {
+            color: rgb(44, 95, 153);
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+    }
+    &__block {
+        min-width: 200px;
+        box-sizing: border-box;
+        text-align: center;
+        cursor: pointer;
+        & h4,
+        h5 {
+            color: rgb(44, 95, 153);
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+    }
+     :hover {
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+}
