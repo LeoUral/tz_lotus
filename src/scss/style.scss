@@ -256,6 +256,7 @@ body {
     flex-direction: row;
     flex-wrap: nowrap;
     &__title-block {
+        max-width: 450px;
         min-width: 450px;
         & h4,
         h5 {

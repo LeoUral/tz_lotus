@@ -77,7 +77,10 @@ export default class LogIn extends React.Component {
     sendDataCompany() {
         if (!this.state.show) {
             this.props.onSendDataCompany(this.state);
-            localStorage.clear();
+            localStorage.removeItem('companyName');
+            localStorage.removeItem('companyActivity');
+            localStorage.removeItem('companyAgent');
+            localStorage.removeItem('companyUrl');
         } else {
             this.props.onSendDataCompany(this.state);
             localStorage.setItem('companyName', this.state.name);// разместим данные о новой компании в localStorage

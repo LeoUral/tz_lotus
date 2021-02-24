@@ -389,6 +389,7 @@ body {
 }
 
 .member__title-block {
+  max-width: 450px;
   min-width: 450px;
 }
 

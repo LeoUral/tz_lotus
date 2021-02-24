@@ -6,9 +6,13 @@ class Store {
     currentTime = 0; // текущее время
     secTiming = 0;
     minuteTime = 0; //минуты до конца хода
+    idCompany = -2; //активная компания
 
     constructor() {
         makeAutoObservable(this);
+    }
+    doChangeIdCompany(id) {
+        this.idCompany = id;
     }
 
     startTime() {

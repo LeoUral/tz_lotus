@@ -1,4 +1,5 @@
 import React from 'react';
+import Store from '../store/Store';
 import LogIn from './LogIn';
 import Welcome from './Welcome';
 
@@ -54,12 +55,16 @@ export default class Main extends React.Component {
         data.forEach(element => {
             if (element.name === state.nameCompany && element.activity === state.activityCompany) {
                 this.setState({
+                    idCompany: element.id,
                     nameCompany: element.name,
                     activityCompany: element.activity,
                     agentCompany: element.agent,
                     urlIconCompany: element.logoUrl,
                     verify: true
                 })
+                Store.doChangeIdCompany(element.id);
+                localStorage.setItem('idCompany', element.id);
+                console.log(Store.idCompany + ' <<<<<<<');
                 return;
             }
         });
@@ -75,6 +80,9 @@ export default class Main extends React.Component {
             urlIconCompany: localStorage.getItem('companyUrl'),
             verify: true
         })
+        Store.doChangeIdCompany(-1);
+        localStorage.setItem('idCompany', -1);
+        console.log(Store.idCompany + ' <<<<<<<');
     }
 
     render() {

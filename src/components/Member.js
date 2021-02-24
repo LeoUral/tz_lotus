@@ -1,4 +1,5 @@
 import React from 'react';
+import Store from '../store/Store';
 
 export default class Member extends React.Component {
     constructor(props) {
@@ -18,12 +19,15 @@ export default class Member extends React.Component {
         const number = id + 1; // id + 1
         const nameCompany = this.props.name;
         const complex = '-';
-        const deadline = '80';
-        const warrantyDate = '24';
-        const paymentTerms = '30%';
-        const price = 3125987;
-        const priceDiscount = -25000;
-        const priceTotal = 3100987;
+        let deadline = Math.floor(80 + 30 * Math.random());
+        let warrantyDate = '24';
+        let paymentTerms = '30%';
+        let price = Math.floor(3125987 + 1000000 * Math.random());
+        let priceDiscount = -25000;
+        let priceTotal = price + priceDiscount;
+        if (+Store.idCompany === +this.props.id) {
+            deadline = warrantyDate = paymentTerms = price = priceDiscount = priceTotal = 0;
+        }
 
         return (
             <>
