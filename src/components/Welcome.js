@@ -2,8 +2,10 @@ import React from 'react';
 
 export default class Welcome extends React.Component {
 
+
     render() {
         console.log(localStorage.getItem('verify'));
+
 
         return (
             <>

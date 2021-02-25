@@ -19,6 +19,7 @@ export default class Member extends React.Component {
         const number = id + 1; // id + 1
         const nameCompany = this.props.name;
         const complex = '-';
+        // симуляция ввода данных сторонними организациями
         let deadline = Math.floor(80 + 30 * Math.random());
         let warrantyDate = '24';
         let paymentTerms = '30%';

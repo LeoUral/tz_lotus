@@ -1,10 +1,16 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Button } from 'react-bootstrap';
 import Store from '../store/Store';
 import HeaderTrade from './HeaderTrade';
 import InformationTextTrade from './InformationTextTrade';
 import Timing from './Timing';
 import ViewTrade from './ViewTrade';
+import chat from './svgConstant/ConstantSvgChat';
+import close from './svgConstant/ConstantSvgClose';
+import report from './svgConstant/ConstantSvgReport';
+import tradeBtn from './svgConstant/ConstantSvgTrade';
+import update from './svgConstant/ConstantSvgUpdate';
+import ModalTrade from './ModalTrade';
 
 export default class Trade extends React.Component {
     constructor(props) {
@@ -20,6 +26,7 @@ export default class Trade extends React.Component {
             document.location.href = '/';
         }
         Store.doChangeIdCompany(localStorage.getItem('idCompany')); // востанавливаем id компании 
+        Store.changeTiming();
     }
 
     componentWillUnmount() {
@@ -31,6 +38,7 @@ export default class Trade extends React.Component {
         return (
             <>
                 <section>
+                    <ModalTrade />
                     <Container>
                         <HeaderTrade />
                     </Container>
@@ -40,6 +48,15 @@ export default class Trade extends React.Component {
                     </div>
                     <Container className="company-block">
                         <ViewTrade />
+                    </Container>
+                    <Container fluid>
+                        <div className="btn-container-trade">
+                            <Button variant="success" className="btn-trade" >Чат {chat} </Button>
+                            <Button variant="info" className="btn-trade">Обновить {update}</Button>
+                            <Button variant="danger" className="btn-trade">Завершить торги {tradeBtn} </Button>
+                            <Button variant="danger" className="btn-trade">Отчет {report}</Button>
+                            <Button variant="secondary" className="btn-trade">Закрыть {close}</Button>
+                        </div>
                     </Container>
                 </section>
             </>
