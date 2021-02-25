@@ -453,7 +453,6 @@ body {
 
 .modal {
   width: 100%;
-  position: relative;
 }
 
 .modal__shadow {
@@ -472,8 +471,63 @@ body {
   top: 40px;
   left: 25%;
   width: 50%;
-  height: 30vh;
+  min-height: 50vh;
   background-color: #fff;
   opacity: 1;
   z-index: 12;
+  padding: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.modal__window h4 {
+  display: block;
+  width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.modal__window-label {
+  display: block;
+  margin: 30px 0 5px 0;
+}
+
+.modal__window-label input {
+  width: 250px;
+  margin: 0 0 0 20px;
+}
+
+.btn_input {
+  margin: 20px 0 0 0;
+  width: 150px;
+  height: 40px;
+  outline: none;
+  border: none;
+  background-color: #f74c4c;
+  color: #fff;
+  font-weight: 700;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.btn_input:hover {
+  -webkit-box-shadow: 3px 3px 5px #000;
+          box-shadow: 3px 3px 5px #000;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.btn_input:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
