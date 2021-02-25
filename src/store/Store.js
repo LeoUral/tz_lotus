@@ -13,6 +13,7 @@ class Store {
     }
     doChangeIdCompany(id) {
         this.idCompany = id;
+        console.log(id + '<<<<<< id Company');//test
     }
 
     startTime() {

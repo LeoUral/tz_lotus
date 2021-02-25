@@ -5,7 +5,6 @@ export default class ModalTrade extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            show: true,
             date: 0,
             garant: 0,
             condition: 0,
@@ -18,6 +17,7 @@ export default class ModalTrade extends React.Component {
         this.handleChangeCondition = this.handleChangeCondition.bind(this);
         this.handleChangePrice = this.handleChangePrice.bind(this);
         this.handleChangeDiscount = this.handleChangeDiscount.bind(this);
+        this.handleClickShow = this.handleClickShow.bind(this);
     }
 
     handleChangeDate(e) {
@@ -52,14 +52,22 @@ export default class ModalTrade extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        console.log('CLICK CLICK');
+        console.log(this.state);//test
+        this.props.onChangeShow();
+        this.props.onDataCompany(this.state);
+    }
+
+    handleClickShow() {
+        this.props.onChangeShow();
     }
 
     render() {
+
+        const show = this.props.show;
         return (
             <>
-                <div className="modal" style={{ display: this.state.show ? 'block' : 'none' }} >
-                    <div className="modal__shadow"></div>
+                <div className="modal" style={{ display: show ? 'block' : 'none' }} >
+                    <div className="modal__shadow" onClick={this.handleClickShow} ></div>
                     <form className="modal__window">
                         <h4>Форма для внесения изменений</h4>
                         <Timing />
@@ -72,7 +80,7 @@ export default class ModalTrade extends React.Component {
                             <input type='text' placeholder="гарантийные обязательства" onChange={this.handleChangeGarant} />
                         </label>
                         <label className="modal__window-label">
-                            Условия оплаты:
+                            Условия оплаты, %:
                             <input type='text' placeholder="условия оплаты" onChange={this.handleChangeCondition} />
                         </label>
                         <label className="modal__window-label">

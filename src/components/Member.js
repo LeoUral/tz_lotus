@@ -7,11 +7,15 @@ export default class Member extends React.Component {
         this.state = {
             member: []
         }
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick(e) {
         console.log(e.target.parentElement.dataset.member);
+        this.props.onHandleClick(e.target.parentElement.dataset.member);//* передаем id вверх
+        Store.doChangeIdCompany(e.target.parentElement.dataset.member);
     }
+
 
     render() {
 
@@ -19,15 +23,22 @@ export default class Member extends React.Component {
         const number = id + 1; // id + 1
         const nameCompany = this.props.name;
         const complex = '-';
-        // симуляция ввода данных сторонними организациями
-        let deadline = Math.floor(80 + 30 * Math.random());
-        let warrantyDate = '24';
-        let paymentTerms = '30%';
-        let price = Math.floor(3125987 + 1000000 * Math.random());
-        let priceDiscount = -25000;
-        let priceTotal = price + priceDiscount;
+        //* симуляция ввода данных сторонними организациями
+        this.deadline = Math.floor(80 + 30 * Math.random());
+        this.warrantyDate = '24';
+        this.paymentTerms = '30%';
+        this.price = Math.floor(3125987 + 1000000 * Math.random());
+        this.priceDiscount = -25000;
+        this.priceTotal = this.price + this.priceDiscount;
+        console.log(+Store.idCompany + ' --- ' + +this.props.id);
         if (+Store.idCompany === +this.props.id) {
-            deadline = warrantyDate = paymentTerms = price = priceDiscount = priceTotal = 0;
+            this.deadline = this.props.date;
+            this.warrantyDate = this.props.garant;
+            this.paymentTerms = this.props.condition;
+            this.price = this.props.price;
+            this.priceDiscount = this.props.discount;
+            this.priceTotal = +this.price - +this.priceDiscount;
+            console.log(this.deadline + ' ' + this.priceTotal);//test
         }
 
         return (
@@ -37,12 +48,12 @@ export default class Member extends React.Component {
                     <h5 className="line-bottom" > {nameCompany} </h5>
                     <div className="bg-gray"> {complex} </div>
                     <div className="bg-gray"> <br></br> </div>
-                    <div> {deadline} </div>
-                    <div className="bg-gray"> {warrantyDate} </div>
-                    <div> {paymentTerms} </div>
-                    <div className="blue bg-gray"> {price} <span> руб.</span> </div>
-                    <div className="red bg-gray"> {priceDiscount} <span> руб.</span></div>
-                    <div className="green bg-gray"> {priceTotal} <span> руб.</span></div>
+                    <div> {this.deadline} </div>
+                    <div className="bg-gray"> {this.warrantyDate} </div>
+                    <div> {this.paymentTerms} </div>
+                    <div className="blue bg-gray"> {this.price} <span> руб.</span> </div>
+                    <div className="red bg-gray"> {this.priceDiscount} <span> руб.</span></div>
+                    <div className="green bg-gray"> {this.priceTotal} <span> руб.</span></div>
                 </div>
             </>
         )

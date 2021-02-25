@@ -16,9 +16,40 @@ export default class Trade extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            time: 0
+            show: false,
+            idCompany: '',
+            date: 0,
+            garant: 0,
+            condition: 0,
+            price: 0,
+            discount: 0
         }
+        this.doChangeShow = this.doChangeShow.bind(this);
+        this.doChangeId = this.doChangeId.bind(this);
+        this.doDataCompany = this.doDataCompany.bind(this);
+    }
 
+    doChangeShow() {
+        this.setState({
+            show: !this.state.show
+        })
+    }
+    doChangeId(id) {
+        console.log(id + ' << - ID in Trade');//test
+        this.setState({
+            idCompany: id
+        })
+        this.doChangeShow();
+    }
+
+    doDataCompany(data) {
+        this.setState({
+            date: data.date,
+            garant: data.garant,
+            condition: data.condition,
+            price: data.price,
+            discount: data.discount
+        })
     }
 
     componentDidMount() {
@@ -38,7 +69,10 @@ export default class Trade extends React.Component {
         return (
             <>
                 <section>
-                    <ModalTrade />
+                    <ModalTrade
+                        show={this.state.show}
+                        onChangeShow={this.doChangeShow}
+                        onDataCompany={this.doDataCompany} />
                     <Container>
                         <HeaderTrade />
                     </Container>
@@ -47,7 +81,14 @@ export default class Trade extends React.Component {
                         <Timing />
                     </div>
                     <Container className="company-block">
-                        <ViewTrade />
+                        <ViewTrade
+                            onChangeIdCompany={this.doChangeId}
+                            date={this.state.date}
+                            garant={this.state.garant}
+                            condition={this.state.condition}
+                            price={this.state.price}
+                            discount={this.state.discount}
+                        />
                     </Container>
                     <Container fluid>
                         <div className="btn-container-trade">

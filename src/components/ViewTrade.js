@@ -6,9 +6,11 @@ export default class ViewTrade extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: []
+            data: [],
+            idCompany: ''
         }
         this.viewCompanyTrade = this.viewCompanyTrade.bind(this);
+        this.doHandleClick = this.doHandleClick.bind(this);
     }
 
     async getDataCompany() {
@@ -28,6 +30,17 @@ export default class ViewTrade extends React.Component {
         }
     }
 
+    doHandleClick(id) {
+        this.setState({
+            idCompany: id
+        })
+        this.props.onChangeIdCompany(id);
+        setTimeout(() => {
+            console.log(this.state.idCompany + " <- ViewTrade change ID");//test
+
+        }, 100)
+    }
+
     viewCompanyTrade(data) {
         this.arrayCompany = [];
 
@@ -42,6 +55,12 @@ export default class ViewTrade extends React.Component {
                     <Member
                         id={-1}
                         name={localStorage.getItem('companyName')}
+                        onHandleClick={this.doHandleClick}
+                        date={this.props.date}
+                        garant={this.props.garant}
+                        condition={this.props.condition}
+                        price={this.props.price}
+                        discount={this.props.discount}
                     />
                 </React.Fragment>
             )
@@ -53,6 +72,12 @@ export default class ViewTrade extends React.Component {
                     <Member
                         id={element.id}
                         name={element.name}
+                        onHandleClick={this.doHandleClick}
+                        date={this.props.date}
+                        garant={this.props.garant}
+                        condition={this.props.condition}
+                        price={this.props.price}
+                        discount={this.props.discount}
                     />
                 </React.Fragment>
             )
