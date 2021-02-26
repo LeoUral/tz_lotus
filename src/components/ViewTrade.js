@@ -85,6 +85,7 @@ export default class ViewTrade extends React.Component {
         });
     }
 
+    //TODO переданное состояние state передать так же через функцию в Member
     componentDidMount() {
         this.getDataCompany();
     }

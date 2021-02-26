@@ -50,6 +50,10 @@ export default class Trade extends React.Component {
             price: data.price,
             discount: data.discount
         })
+        setTimeout(() => {
+            console.log(this.state);//TODO  Прописать функцию передачи state в ViewTrade по аналогии подьема состояния
+        }, 50);
+
     }
 
     componentDidMount() {
