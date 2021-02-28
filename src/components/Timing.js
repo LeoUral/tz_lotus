@@ -3,8 +3,6 @@ import Store from '../store/Store';
 
 const Timing = observer(() => {
 
-    // Store.changeTiming();
-
     let seconds = Store.secTiming;
     let minutes = Store.minuteTime;
 

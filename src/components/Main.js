@@ -29,7 +29,7 @@ export default class Main extends React.Component {
             urlIconCompany: data.iconUrl,
             showRegistartion: data.show
         });
-        setTimeout(() => { console.log(this.state); });//test
+        // setTimeout(() => { console.log(this.state); });//test
         this.getDataCompanyFromServer();
     }
 
@@ -39,8 +39,8 @@ export default class Main extends React.Component {
 
         if (response.ok) {
             let dataCompany = await response.json();
-
-            console.log(dataCompany);
+            console.log('RESPONSE - OK');
+            // console.log(dataCompany);//test
             this.verivicationCompany(dataCompany);
         } else {
             console.log('ERROR FETCH');
@@ -64,7 +64,6 @@ export default class Main extends React.Component {
                 })
                 Store.doChangeIdCompany(element.id);
                 localStorage.setItem('idCompany', element.id);
-                console.log(Store.idCompany + ' <<<<<<<');
                 return;
             }
         });
@@ -82,7 +81,6 @@ export default class Main extends React.Component {
         })
         Store.doChangeIdCompany(-1);
         localStorage.setItem('idCompany', -1);
-        console.log(Store.idCompany + ' <<<<<<<');
     }
 
     render() {

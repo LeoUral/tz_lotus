@@ -12,12 +12,13 @@ import tradeBtn from './svgConstant/ConstantSvgTrade';
 import update from './svgConstant/ConstantSvgUpdate';
 import ModalTrade from './ModalTrade';
 
+
 export default class Trade extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             show: false,
-            idCompany: '',
+            idCompany: null,
             date: 0,
             garant: 0,
             condition: 0,
@@ -27,6 +28,8 @@ export default class Trade extends React.Component {
         this.doChangeShow = this.doChangeShow.bind(this);
         this.doChangeId = this.doChangeId.bind(this);
         this.doDataCompany = this.doDataCompany.bind(this);
+        this.handleClickUpdate = this.handleClickUpdate.bind(this);
+        this.handleClickCloseTrade = this.handleClickCloseTrade.bind(this);
     }
 
     doChangeShow() {
@@ -51,9 +54,18 @@ export default class Trade extends React.Component {
             discount: data.discount
         })
         setTimeout(() => {
-            console.log(this.state);//TODO  Прописать функцию передачи state в ViewTrade по аналогии подьема состояния
+            Store.transferDataUp(this.state); //* передача в STORE данные по торгам выбранной компании            
         }, 50);
 
+    }
+
+    handleClickUpdate() {
+        console.log('CLICK CLICK CLICK update. No function');
+    }
+
+    handleClickCloseTrade() {
+        // отправить данные и перейти на страницу /close
+        document.location.href = '/close';
     }
 
     componentDidMount() {
@@ -61,7 +73,7 @@ export default class Trade extends React.Component {
             document.location.href = '/';
         }
         Store.doChangeIdCompany(localStorage.getItem('idCompany')); // востанавливаем id компании 
-        Store.changeTiming();
+        Store.changeTiming(); // запуск таймера
     }
 
     componentWillUnmount() {
@@ -87,18 +99,13 @@ export default class Trade extends React.Component {
                     <Container className="company-block">
                         <ViewTrade
                             onChangeIdCompany={this.doChangeId}
-                            date={this.state.date}
-                            garant={this.state.garant}
-                            condition={this.state.condition}
-                            price={this.state.price}
-                            discount={this.state.discount}
                         />
                     </Container>
                     <Container fluid>
                         <div className="btn-container-trade">
                             <Button variant="success" className="btn-trade" >Чат {chat} </Button>
-                            <Button variant="info" className="btn-trade">Обновить {update}</Button>
-                            <Button variant="danger" className="btn-trade">Завершить торги {tradeBtn} </Button>
+                            <Button variant="info" className="btn-trade" onClick={this.handleClickUpdate} >Обновить {update}</Button>
+                            <Button variant="danger" className="btn-trade" onClick={this.handleClickCloseTrade}>Завершить торги {tradeBtn} </Button>
                             <Button variant="danger" className="btn-trade">Отчет {report}</Button>
                             <Button variant="secondary" className="btn-trade">Закрыть {close}</Button>
                         </div>

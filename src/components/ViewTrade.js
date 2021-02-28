@@ -7,7 +7,8 @@ export default class ViewTrade extends React.Component {
         super(props);
         this.state = {
             data: [],
-            idCompany: ''
+            idCompany: '',
+            membersTrade: []
         }
         this.viewCompanyTrade = this.viewCompanyTrade.bind(this);
         this.doHandleClick = this.doHandleClick.bind(this);
@@ -19,9 +20,10 @@ export default class ViewTrade extends React.Component {
 
         if (response.ok) {
             let dataCompany = await response.json();
+            console.log('RESPONSE - OK');
 
             this.viewCompanyTrade(dataCompany);
-            console.log(dataCompany);//test
+            // console.log(dataCompany);//test
             this.setState({
                 data: dataCompany
             })
@@ -35,32 +37,26 @@ export default class ViewTrade extends React.Component {
             idCompany: id
         })
         this.props.onChangeIdCompany(id);
-        setTimeout(() => {
-            console.log(this.state.idCompany + " <- ViewTrade change ID");//test
-
-        }, 100)
+        // setTimeout(() => {
+        //     console.log(this.state.idCompany + " <- ViewTrade change ID");//test
+        // }, 150)
     }
 
     viewCompanyTrade(data) {
         this.arrayCompany = [];
 
         this.arrayCompany.push(
-            <React.Fragment key={data[0].name}>
+            <React.Fragment key={'a'}>
                 <TitleMember />
             </React.Fragment>);
 
         if (localStorage.getItem('companyName')) {
             this.arrayCompany.push(
-                <React.Fragment key={localStorage.getItem('companyName')}>
+                <React.Fragment key={'b'}>
                     <Member
                         id={-1}
                         name={localStorage.getItem('companyName')}
                         onHandleClick={this.doHandleClick}
-                        date={this.props.date}
-                        garant={this.props.garant}
-                        condition={this.props.condition}
-                        price={this.props.price}
-                        discount={this.props.discount}
                     />
                 </React.Fragment>
             )
@@ -73,11 +69,6 @@ export default class ViewTrade extends React.Component {
                         id={element.id}
                         name={element.name}
                         onHandleClick={this.doHandleClick}
-                        date={this.props.date}
-                        garant={this.props.garant}
-                        condition={this.props.condition}
-                        price={this.props.price}
-                        discount={this.props.discount}
                     />
                 </React.Fragment>
             )
@@ -85,7 +76,7 @@ export default class ViewTrade extends React.Component {
         });
     }
 
-    //TODO переданное состояние state передать так же через функцию в Member
+
     componentDidMount() {
         this.getDataCompany();
     }

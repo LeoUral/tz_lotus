@@ -1,5 +1,7 @@
 import React from 'react';
 import Timing from './Timing';
+import Store from '../store/Store';
+
 
 export default class ModalTrade extends React.Component {
     constructor(props) {
@@ -52,7 +54,7 @@ export default class ModalTrade extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        console.log(this.state);//test
+        // console.log(this.state);//test
         this.props.onChangeShow();
         this.props.onDataCompany(this.state);
     }
@@ -62,7 +64,7 @@ export default class ModalTrade extends React.Component {
     }
 
     render() {
-
+        Store.doChangeIdCompany(localStorage.getItem('idCompany')); // востанавливаем id компании 
         const show = this.props.show;
         return (
             <>
@@ -84,11 +86,11 @@ export default class ModalTrade extends React.Component {
                             <input type='text' placeholder="условия оплаты" onChange={this.handleChangeCondition} />
                         </label>
                         <label className="modal__window-label">
-                            Стоимость изготовления:
+                            Стоимость изготовления, руб:
                             <input type='text' placeholder="стоимость изготовления" onChange={this.handleChangePrice} />
                         </label>
                         <label className="modal__window-label">
-                            Скидка:
+                            Скидка, руб:
                             <input type='text' placeholder="дискоунт" onChange={this.handleChangeDiscount} />
                         </label>
                         <input className='btn_input' type='submit' onClick={this.handleClick} placeholder='отпраить' />
