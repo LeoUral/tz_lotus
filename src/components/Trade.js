@@ -73,7 +73,7 @@ export default class Trade extends React.Component {
             document.location.href = '/';
         }
         Store.doChangeIdCompany(localStorage.getItem('idCompany')); // востанавливаем id компании 
-        Store.changeTiming(); // запуск таймера
+        Store.changeTiming(); // запуск таймера, продолжение отсчета
     }
 
     componentWillUnmount() {

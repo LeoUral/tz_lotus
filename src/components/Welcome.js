@@ -1,4 +1,5 @@
 import React from 'react';
+import Store from '../store/Store';
 
 export default class Welcome extends React.Component {
 
@@ -6,6 +7,7 @@ export default class Welcome extends React.Component {
     render() {
         // console.log(localStorage.getItem('verify'));//test
         localStorage.setItem('time', 0);
+        Store.changeTiming(); // запуск таймера
 
         return (
             <>
